@@ -39,10 +39,10 @@ public class Solution10 {
         }
         boolean is = !s.isEmpty()&& (s.charAt(0) == p.charAt(0) || p.charAt(0) == '.');
         if(p.length()>1 && p.charAt(1) == '*' ){
-            return ( is&& isMatch(s.substring(1),p)  )
-                    || isMatch(s,p.substring(2)) ;
+            return ( is&& isMatch2(s.substring(1),p)  )
+                    || isMatch2(s,p.substring(2)) ;
         }else {
-            return is && isMatch(s.substring(1),p.substring(1));
+            return is && isMatch2(s.substring(1),p.substring(1));
         }
     }
 }
