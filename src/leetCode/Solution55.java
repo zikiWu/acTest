@@ -8,7 +8,57 @@ public class Solution55 {
         new Solution55().canJump(new int[]{1,2,0,3});
         new Solution55().canJump(new int[]{0,2});
         new Solution55().canJump(new int[]{2,0});
+        new Solution55().canJump4(new int[]{2,3,1,1,4});
+        new Solution55().canJump4(new int[]{3,2,1,0,4});
+        new Solution55().canJump4(new int[]{1,2,0,3});
+        new Solution55().canJump4(new int[]{0,2});
+        new Solution55().canJump4(new int[]{2,0});
+
+        new Solution55().canJump5(new int[]{2,3,1,1,4});
+        new Solution55().canJump5(new int[]{3,2,1,0,4});
+        new Solution55().canJump5(new int[]{1,2,0,3});
+        new Solution55().canJump5(new int[]{0,2});
+        new Solution55().canJump5(new int[]{2,0});
     }
+
+
+    public boolean canJump5(int[] nums) {
+        int len = nums.length;
+        boolean[] b = new boolean[len];
+        b[len - 1] = true;
+        for (int i = len - 2; i >=0; i--){
+            boolean r = false;
+            for (int j = 1; j <=nums[i] && i+j < len ; j++){
+                r = r || b[i+j];
+            }
+            b[i] = r;
+        }
+        System.out.println(b[0]);
+        return b[0];
+    }
+
+    // 暴力递归
+    public boolean canJump4(int[] nums) {
+        System.out.println(jump2(nums, 0));
+       return jump2(nums, 0);
+    }
+
+    public boolean jump2(int[] nums, int i) {
+        if (nums.length - 1 == i){
+            return true;
+        }else if (nums[i] == 0 || i > nums.length - 1){
+            return false;
+        }
+        boolean re = false;
+        for (int j = 1; j<=nums[i]; j++){
+            re = re || jump2(nums,i+j);
+        }
+        return re;
+    }
+
+
+
+
     //动态规划
     public boolean canJump(int[] nums) {
         boolean[] a = new boolean[nums.length];

@@ -57,7 +57,7 @@ public class Code01_KMP2 {
 
 	public static void main(String[] args) {
 		String str = "abcabcababaccc";
-		String match = "cababa";
+		String match = "ababa";
 		System.out.println(getIndexOf(str, match));
 
 	}

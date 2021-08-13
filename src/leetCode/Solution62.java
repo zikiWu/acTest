@@ -4,6 +4,9 @@ public class Solution62 {
     public static void main(String[] args){
 
         System.out.println(uniquePaths(7,3));
+        System.out.println(uniquePaths2(7,3));
+        System.out.println(uniquePaths(10,3));
+        System.out.println(uniquePaths2(10,3));
     }
 
     //动态规划
@@ -25,7 +28,7 @@ public class Solution62 {
     //暴力解决
     public static int uniquePaths2(int m, int n) {
         //边界值
-        if (m == 1&&n == 1){
+        if (m == 1 || n == 1){
             return 1;
         }
         if (m <1 || n <1){

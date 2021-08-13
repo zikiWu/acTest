@@ -26,4 +26,15 @@ public class Solution50 {
         }
         return false;
     }
+
+    public int duplicate(int[] numbers) {
+        Map<Integer,Integer> map = new HashMap<>();
+        for (int i = 0; i < numbers.length; i++) {
+            if (map.containsKey(numbers[i])){
+                return numbers[i];
+            }
+            map.put(numbers[i],i);
+        }
+        return -1;
+    }
 }

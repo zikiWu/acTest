@@ -1,5 +1,10 @@
 package leetCode;
 
+/**
+ * 给你一个链表，删除链表的倒数第 n 个结点，并且返回链表的头结点。
+ *
+ * 进阶：你能尝试使用一趟扫描实现吗？
+ */
 
  // Definition for singly-linked list.
   class ListNode {
@@ -9,6 +14,28 @@ package leetCode;
   }
 
 class Solution19 {
+
+
+    public static ListNode removeNthFromEnd3(ListNode head, int n) {
+        ListNode first = head;
+        ListNode head2 = head;
+        ListNode pre = null;
+        for (int i = 0;i < n ;i ++){
+            head2 = head2.next;
+        }
+        while (head2 != null){
+            head2 = head2.next;
+            pre = head;
+            head = head.next;
+        }
+        if (pre == null){
+            return first.next;
+        }else {
+            pre.next = head.next;
+        }
+        return first;
+    }
+
     public static ListNode removeNthFromEnd(ListNode head, int n) {
         ListNode h1 = head;
         ListNode h2 = head;
@@ -70,6 +97,6 @@ class Solution19 {
         l2.next = l3;
         l3.next = l4;
         l4.next = l5;
-        removeNthFromEnd2(l1,2);
+        removeNthFromEnd3(l1,5);
     }
 }

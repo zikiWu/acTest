@@ -3,7 +3,7 @@ package offer;
 public class Solution12 {
     public static void main(String[] args){
 
-        new Solution12().Power(2,7);
+        new Solution12().Power(2,2);
     }
     public double Power(double base, int exponent) {
         if (base == 0)
