@@ -32,7 +32,6 @@ package leetCode;
 
 public class Solution29 {
     public static void main(String[] args){
-
         System.out.println(-1 << 1);
        new Solution29().divide(100,-3);
     }

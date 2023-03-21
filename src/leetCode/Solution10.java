@@ -8,6 +8,16 @@ public class Solution10 {
         System.out.println(new Solution10().isMatch("mississippi","mis*is*p*."));
     }
 
+    public boolean isMatch3(String s, String p) {
+
+
+
+        return true;
+    }
+
+
+
+
     //动态规划
     public boolean isMatch(String s, String p) {
         int m = s.length(), n = p.length();

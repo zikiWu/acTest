@@ -16,7 +16,6 @@ import java.util.Map;
  */
 public class Solution2 {
     public static void main(String[] args){
-
     }
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         int isAdd = 0;
@@ -50,4 +49,32 @@ public class Solution2 {
         }
         return node2.next;
     }
+
+    public ListNode addTwoNumbers2(ListNode l1, ListNode l2) {
+        ListNode result = new ListNode(0);
+        ListNode orgin = result;
+        int add = 0;
+        while (l1 != null || l2 != null){
+            int sum = 0;
+            if (l1 != null){
+                sum += l1.val;
+            }
+            if (l2 != null){
+                sum += l2.val;
+            }
+            if (sum >= 10){
+                sum = sum % 10 + add;
+                add = 1;
+            }else {
+                add = 0;
+            }
+            result.next = new ListNode(sum);
+            result = result.next;
+            l1 = l1 == null ? null : l1.next;
+            l2 = l2 == null ? null : l2.next;
+        }
+        return orgin.next;
+    }
+
+
 }

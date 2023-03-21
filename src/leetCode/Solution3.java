@@ -26,4 +26,17 @@ public class Solution3 {
         return maxLen;
     }
 
+
+    public int lengthOfLongestSubstring2(String s) {
+        int max = 0;
+        LinkedList<Character> linkedList = new LinkedList<>();
+        for (int i = 0; i < s.length() ; i++){
+            while (linkedList.contains(s.charAt(i))){
+                linkedList.removeFirst();
+            }
+            linkedList.addLast(s.charAt(i));
+            max = Math.max(max, linkedList.size());
+        }
+        return max;
+    }
 }
