@@ -40,11 +40,30 @@ public class Solution26 {
     public static void main(String[] args){
 
         int[] nums = {1,1,2,2};
-        int len = removeDuplicates2(nums);
+        int len = removeDuplicates3(nums);
         for (int i = 0; i < len; i++) {
             System.out.println((nums[i]));
         }
     }
+
+    public static int removeDuplicates3(int[] nums) {
+        if (nums.length <= 1){
+            return nums.length;
+        }
+        int curNum = nums[0];
+        int curIndex = 1;
+        for (int i = 1; i < nums.length; i++){
+            if (curNum == nums[i]){
+                continue;
+            }
+            curNum = nums[i];
+            nums[curIndex++] = nums[i];
+        }
+        return curIndex;
+    }
+
+
+
     public static int removeDuplicates2(int[] nums) {
         int i = 0;
         for (int j = 1; j < nums.length; j++){

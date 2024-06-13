@@ -39,4 +39,19 @@ public class Solution3 {
         }
         return max;
     }
+
+
+
+    public int lengthOfLongestSubstring3(String s) {
+        int max = 0;
+        LinkedList<Character> list = new LinkedList<>();
+        for (int i = 0; i < s.length(); i++){
+            while (list.contains(s.charAt(i))){
+                list.removeFirst();
+            }
+            list.addLast(s.charAt(i));
+            max = Math.max(max, list.size());
+        }
+        return max;
+    }
 }
