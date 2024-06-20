@@ -15,10 +15,24 @@ import java.util.*;
  */
 public class Solution1 {
     public static void main(String[] args){
-        new Solution1().twoSum(new int[]{3,2,4}, 6);
-        int[] ints = new Solution1().twoSum(new int[]{2, 7, 11, 15}, 9);
+        new Solution1().twoSum3(new int[]{3,2,4}, 6);
+        int[] ints = new Solution1().twoSum3(new int[]{2, 7, 11, 15}, 9);
         System.out.println(ints[0] + " " + ints[1]);
     }
+
+
+    public int[] twoSum3(int[] nums, int target) {
+        Map<Integer,Integer> map = new HashMap<>();
+        for (int i = 0; i < nums.length; i++){
+            if (map.containsKey(nums[i])){
+                return new int[]{map.get(nums[i]), i};
+            }
+            map.put(target - nums[i], i);
+        }
+        return new int[]{};
+    }
+
+
 
 
     public int[] twoSum(int[] nums, int target) {

@@ -1,6 +1,7 @@
 package leetCode;
 
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.Map;
 import java.util.Stack;
 
@@ -25,14 +26,42 @@ import java.util.Stack;
  */
 public class Solution20 {
     public static void main(String[] args){
-        System.out.println(new Solution20().isValid2(""));
-        System.out.println(new Solution20().isValid2("()[]{}"));
-        System.out.println(new Solution20().isValid2("(]"));
-        System.out.println(new Solution20().isValid2("([)]"));
-        System.out.println(new Solution20().isValid2("{[]}"));
-        System.out.println(new Solution20().isValid2("{}}"));
+        System.out.println(new Solution20().isValid3(""));
+        System.out.println(new Solution20().isValid3("()[]{}"));
+        System.out.println(new Solution20().isValid3("(]"));
+        System.out.println(new Solution20().isValid3("([)]"));
+        System.out.println(new Solution20().isValid3("{[]}"));
+        System.out.println(new Solution20().isValid3("{}}"));
 
     }
+
+    public boolean isValid3(String s) {
+        LinkedList<Character> l = new LinkedList<>();
+        for (int i = 0; i < s.length(); i++){
+            char c = s.charAt(i);
+            if (c == '(' || c == '{' || c == '['){
+                l.addLast(c);
+            }else {
+                if (l.isEmpty()){
+                    return false;
+                }
+                if ((l.getLast() == '(' && c  == ')') ||
+                        (l.getLast() == '[' && c  == ']')||
+                        (l.getLast() == '{' && c  == '}')) {
+                    l.removeLast();
+                }else {
+                    return false;
+                }
+            }
+        }
+        return l.isEmpty();
+    }
+
+
+
+
+
+
 
     public boolean isValid2(String s) {
         Stack<Character> stack = new Stack<>();

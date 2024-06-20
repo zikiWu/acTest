@@ -24,6 +24,47 @@ public class Solution36 {
     public static void main(String[] args){
 //        new Solution36().isValidSudoku()
     }
+
+    public boolean isValidSudoku2(char[][] board) {
+        HashMap<Character,Integer> rMap = new HashMap<>();
+        HashMap<Character,Integer> lMap = new HashMap<>();
+        HashMap<Integer,HashSet<Character>> iMap = new HashMap<>();
+        for (int i = 0;i < 9; i++){
+            for (int j = 0;j < 9; j++){
+                if (rMap.containsKey(board[i][j])){
+                    return false;
+                }
+                if (Character.isLetterOrDigit(board[i][j])){
+                    rMap.put(board[i][j], null);
+                }
+                if (lMap.containsKey(board[j][i])){
+                    return false;
+                }
+                if (Character.isLetterOrDigit(board[j][i])){
+                    lMap.put(board[j][i], null);
+                }
+                if (Character.isLetterOrDigit(board[i][j])){
+                    int index = (i/3)*3 + j/3;
+                    HashSet<Character> iSet = iMap.get(index);
+                    if (iSet == null){
+                        iSet = new HashSet<>();
+                        iMap.put(index, iSet);
+                    }
+                    if (iSet.contains(board[i][j])){
+                        return false;
+                    }
+                    iSet.add(board[i][j]);
+                }
+            }
+            rMap.clear();
+            lMap.clear();
+        }
+        return true;
+    }
+
+
+
+
     public boolean isValidSudoku(char[][] board) {
         HashMap<Character,Integer> rMap = new HashMap<>();
         HashMap<Character,Integer> lMap = new HashMap<>();
