@@ -52,6 +52,8 @@ public class Solution155 {
     int vRight;
     int mRight;
     int curMin;
+
+    // 维持一般栈和最小值栈，最小栈栈保存一般栈的下标
     public Solution155() {
         v = new int[462];
         min = new int[462];

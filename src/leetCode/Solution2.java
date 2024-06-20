@@ -56,7 +56,7 @@ public class Solution2 {
         ListNode orgin = result;
         int add = 0;
         while (l1 != null || l2 != null){
-            int sum = 0;
+            int sum = add;
             if (l1 != null){
                 sum += l1.val;
             }
@@ -64,7 +64,7 @@ public class Solution2 {
                 sum += l2.val;
             }
             if (sum >= 10){
-                sum = sum % 10 + add;
+                sum = sum % 10;
                 add = 1;
             }else {
                 add = 0;
@@ -73,6 +73,9 @@ public class Solution2 {
             result = result.next;
             l1 = l1 == null ? null : l1.next;
             l2 = l2 == null ? null : l2.next;
+        }
+        if (add >= 1){
+            result.next = new ListNode(1);
         }
         return orgin.next;
     }
