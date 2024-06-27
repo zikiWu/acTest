@@ -11,6 +11,30 @@ public class Solution105 {
     public static void main(String[] args){
 
     }
+
+
+    public TreeNode buildTree3(int[] preorder, int[] inorder) {
+        Map<Integer, Integer> map = new HashMap();
+        for (int i = 0; i < inorder.length; i++){
+            map.put(inorder[i], i);
+        }
+        return build(preorder, map, 0, preorder.length -1, 0);
+    }
+    public TreeNode build(int[] preorder, Map<Integer, Integer> map, int left , int right, int inStart) {
+        if (left > right){
+            return null;
+        }
+        TreeNode root = new TreeNode(preorder[left]);
+        int rootIdx = map.get(preorder[left]);
+        int leftNum = rootIdx - inStart;
+        root.left = build(preorder, map, left ,  left + leftNum, inStart);
+        root.right = build(preorder, map, left + leftNum + 1 ,right, rootIdx+1);
+        return root;
+    }
+
+
+
+
     public TreeNode buildTree(int[] preorder, int[] inorder) {
         for (int i = 0; i < preorder.length; i++) {
             map.put(inorder[i],i);

@@ -4,6 +4,36 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * 101. 对称二叉树
+ * 已解答
+ * 简单
+ * 相关标签
+ * 相关企业
+ * 给你一个二叉树的根节点 root ， 检查它是否轴对称。
+ *
+ *
+ *
+ * 示例 1：
+ *
+ *
+ * 输入：root = [1,2,2,3,4,4,3]
+ * 输出：true
+ * 示例 2：
+ *
+ *
+ * 输入：root = [1,2,2,null,3,null,3]
+ * 输出：false
+ *
+ *
+ * 提示：
+ *
+ * 树中节点数目在范围 [1, 1000] 内
+ * -100 <= Node.val <= 100
+ *
+ *
+ * 进阶：你可以运用递归和迭代两种方法解决这个问题吗？
+ */
 public class Solution101 {
     public static void main(String[] args){
 
@@ -47,9 +77,9 @@ public class Solution101 {
         if (lroot == null && rroot == null){
             return true;
         }
-        if (lroot == null || rroot == null || lroot.val != rroot.val ){
+        if (lroot == null || rroot == null){
             return false;
         }
-        return symmetric(lroot.left,rroot.right) && symmetric(lroot.right,rroot.left);
+        return (lroot.val == rroot.val) && symmetric(lroot.left,rroot.right) && symmetric(lroot.right,rroot.left);
     }
 }
