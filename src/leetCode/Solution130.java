@@ -19,6 +19,45 @@ public class Solution130 {
     public static void main(String[] args){
         new Solution130().solve(new char[][]{{'X','X','X','X'},{'X','O','O','X'},{'X','X','O','X'},{'X','O','X','X'}});
     }
+
+
+
+    public void solve2(char[][] board) {
+        int r = board.length;
+        int l = board[0].length;
+        for (int i = 0; i < r; i++){
+            for (int j =0 ; j < l; j++){
+                if (board[i][j] == 'O' && (i == 0 || i == r - 1 || j == 0 || j == l - 1)) {
+                    isSolve(board, i, j, r, l);
+                }
+            }
+        }
+        for (int i = 0; i < r; i++){
+            for (int j =0 ; j < l; j++){
+                if (board[i][j] == '#') {
+                    board[i][j] = 'O';
+                }else if (board[i][j] == 'O'){
+                    board[i][j] = 'X';
+                }
+            }
+        }
+    }
+
+
+    public void isSolve(char[][] board, int i , int j, int r, int l) {
+        if (i < 0 || i >= r || j < 0 || j >= l || board[i][j] == 'X' || board[i][j] == '#'){
+            return;
+        }
+        board[i][j] = '#';
+        isSolve(board, i + 1, j, r, l);
+        isSolve(board, i - 1, j, r, l);
+        isSolve(board, i, j + 1, r, l);
+        isSolve(board, i, j - 1, r, l);
+    }
+
+
+
+
     public void solve(char[][] board) {
         for (int i = 0;i < board[0].length;i++){
             if (board[0][i] == 'O'){
