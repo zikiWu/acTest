@@ -25,9 +25,31 @@ import java.util.List;
 
 public class Solution22 {
     public static void main(String[] args){
-        List<String> list = new Solution22().generateParenthesis2(3);
+        List<String> list = new Solution22().generateParenthesis3(3);
         list.forEach(System.out::println);
     }
+
+    public List<String> generateParenthesis3(int n) {
+        List<String> list = new ArrayList<>();
+        parenthesis3(n,n,"",list);
+        return list;
+    }
+
+    public void parenthesis3(int n, int m, String s ,List<String> list){
+        if (n == 0 && m == 0){
+            list.add(s);
+            return;
+        }
+        if (n > 0){
+            parenthesis3(n - 1, m, s + "(", list);
+        }
+        if (n < m){
+            parenthesis3(n, m - 1, s + ")", list);
+        }
+    }
+
+
+
 
     public List<String> generateParenthesis2(int n) {
         List<String> ss = new ArrayList<>();

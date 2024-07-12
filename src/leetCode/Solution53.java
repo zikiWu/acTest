@@ -22,7 +22,6 @@ import java.util.LinkedList;
  * 输入：nums = [0]
  * 输出：0
  */
-
 public class Solution53 {
     public static void main(String[] args){
         new Solution53().maxSubArray(new int[]{1});
@@ -34,8 +33,39 @@ public class Solution53 {
         for (int num : nums){
             curSum+=num;
             max = Math.max(curSum, max);
+            // 重新开始
             if (curSum <= 0){
                 curSum = 0;
+            }
+        }
+        return max;
+    }
+    // 动态规划
+    public int maxSubArray2(int[] nums) {
+        int[] nn = new int[nums.length];
+        nn[0] = nums[0];
+        int max = nums[0];
+        for (int i = 1; i < nums.length; i++){
+            nn[i] = Math.max(nn[i - 1] + nums[i], nums[i]);
+            if (max < nn[i]){
+                max = nn[i];
+            }
+        }
+        return max;
+    }
+
+    // 动态规划
+    public int maxSubArray3(int[] nums) {
+        int sum = nums[0];
+        int max = nums[0];
+        for(int i = 1; i < nums.length; i++){
+            if (sum > 0){
+                sum+=nums[i];
+            }else {
+                sum = nums[i];
+            }
+            if (sum > max){
+                max = sum;
             }
         }
         return max;
